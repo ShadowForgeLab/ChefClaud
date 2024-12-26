@@ -1,11 +1,13 @@
 import React,{useState} from'react';
 import CluadeRecipe from './CluadeRecipe';
 import IngredientList from './IngredientList';
+import { getRecipeFromMistral } from './ai';
+import Loading from '../images/Eclipse@1x-1.0s-200px-200px (1).gif'
 
-export default function Ingredient(){
+
+export default function Ingredient(props){
     const [Ingredients,setIngredients]=useState(['all the main spices','Chicken breast','tomato paste','pasta','Leg piece'])
     
-    const [recipeShown,setRecipeShown]=useState(false);
     // function handleSubmit(event){
     //     event.preventDefault();
     //     // console.log(`form submitted`)
@@ -29,9 +31,21 @@ export default function Ingredient(){
         
     }
 
-    function toggleRecipeShown(){
-        setRecipeShown(prevRecipeShown=>!prevRecipeShown)
-        console.log(recipeShown);
+    const [recipe, setRecipe] = React.useState("")
+    const [loading, setLoading] = useState(false);
+
+    async function getRecipe() {
+        console.log('button clicked');
+        setLoading(true); // Start loading
+        try {
+            const recipeMarkdown = await getRecipeFromMistral(Ingredients);
+            setRecipe(recipeMarkdown);
+            console.log(recipeMarkdown);
+        } catch (error) {
+            console.error('Error fetching recipe:', error);
+        } finally {
+            setLoading(false); // End loading
+        }
     }
 
 
@@ -42,8 +56,11 @@ export default function Ingredient(){
                 <input type="text" placeholder='e.g. oregano' name='ingredient' required />
                 <button className='btn'>Add ingredients</button>
             </form>
-            <IngredientList Ingredients={Ingredients} recipeShown={toggleRecipeShown}/>
-            {recipeShown && <CluadeRecipe Ingredients={Ingredients}/>}
+            <IngredientList Ingredients={Ingredients} getRecipe={getRecipe}/>
+
+            {loading && <div className="LoadingGif"><img style={{width:"100px"}} src={Loading} alt='Loading...'/></div>}
+
+            {recipe && <CluadeRecipe recipe={recipe} />}
         </main>
         
         </>
