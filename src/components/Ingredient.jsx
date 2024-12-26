@@ -6,7 +6,7 @@ import Loading from '../images/Eclipse@1x-1.0s-200px-200px (1).gif'
 
 
 export default function Ingredient(props){
-    const [Ingredients,setIngredients]=useState(['all the main spices','Chicken breast','tomato paste','pasta','Leg piece'])
+    const [Ingredients,setIngredients]=useState([])
     
     // function handleSubmit(event){
     //     event.preventDefault();
