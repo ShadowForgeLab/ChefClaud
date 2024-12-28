@@ -118,6 +118,42 @@ header > h1{
   margin-left: 20px;
   border:2px #1A1A1A ;
 }
+.delete-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tooltip {
+  visibility: hidden; /* Hide tooltip by default */
+  width: 200px; /* Set width of tooltip */
+  background-color: black; /* Background color */
+  color: #fff; /* Text color */
+  text-align: center; /* Center text */
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px; /* Padding */
+  position: absolute; /* Positioning */
+  z-index: 1; /* Ensure it appears above other elements */
+  bottom: 125%; /* Position above the button */
+  left: 50%; /* Center horizontally */
+  margin-left: -100px; /* Adjust to center */
+  opacity: 0; /* Start with opacity 0 */
+  transition: opacity 0.3s; /* Smooth transition */
+}
+
+
+.delete-button{
+  border-radius: 6px;
+  border: none;
+  background-color: #141413;
+  color: #FAFAF8;
+  width: 150px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 9px 13px;
+  margin-right: 25.1rem;
+  margin-bottom: 10px;
+}
 
 .suggested-recipe-container {
   color: #475467;

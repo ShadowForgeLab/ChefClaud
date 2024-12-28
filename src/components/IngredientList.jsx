@@ -11,8 +11,9 @@ export default function IngredientList(props) {
                 <ul className='Ingredient-List'>
                     {ListItems}
                 </ul>
+                {props.Ingredients.length>0 &&  <div className='delete-container'><button className='delete-button' onClick={props.handleDelete}>Delete  Ingredients</button></div>}
                 {props.Ingredients.length>4 && <div className="get-recipe-container">
-                    <div>
+                    <div ref={props.ref}>
                         <h3>Ready for a recipe ?</h3>
                         <p>Generate a recipe from your list of Ingredients.</p>
                     </div>
