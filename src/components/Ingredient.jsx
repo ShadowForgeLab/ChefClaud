@@ -1,7 +1,7 @@
 import React,{useEffect, useRef, useState} from'react';
 import CluadeRecipe from './CluadeRecipe';
 import IngredientList from './IngredientList';
-import { getRecipeFromMistral } from './ai';
+import { getRecipeFromMistral} from './ai';
 import Loading from '../images/Eclipse@1x-1.0s-200px-200px (1).gif'
 
 
